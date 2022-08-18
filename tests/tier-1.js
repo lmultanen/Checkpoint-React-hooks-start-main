@@ -54,7 +54,7 @@ describe('Tier 1: SinglePet component', () => {
     species: 'dog',
   };
 
-  it("renders a pet's name, description, and species passed in as props", () => {
+  xit("renders a pet's name, description, and species passed in as props", () => {
     const wrapper = mount(<SinglePet pet={rigatoni} />);
     expect(wrapper).to.include.text('Rigatoni');
     expect(wrapper).to.include.text('A flaming hot cheetoh in feline form');
