@@ -40,6 +40,10 @@ function PetList(props) {
 }
 
 //selection filter working, adoption status not persisting...
+//might want to initialize a hidden={something} when making each SinglePet
+//instead of filtering.
+
+//then, go back in and modify the SinglePet.js file to hide/show based on that value
 
 export default PetList;
 

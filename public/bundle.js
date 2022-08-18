@@ -51,20 +51,25 @@ function PetList(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "all"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "cats"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "dogs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pet-list"
-  }, props.pets.filter(function (pet) {
-    if (selection === 'all') {
-      return pet;
-    } else {
-      var singular = selection.slice(0, -1);
-      return pet.species === singular;
-    }
-  }).map(function (pet, idx) {
+  }, props.pets.map(function (pet, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SinglePet__WEBPACK_IMPORTED_MODULE_1__["default"], {
       pet: pet,
-      key: idx
+      key: idx,
+      visible: selection === 'all' ? true : pet.species === selection.slice(0, 1) ? true : false
     });
   })));
 } //selection filter working, adoption status not persisting...
+//might want to initialize a hidden={something} when making each SinglePet
+//instead of filtering.
+//then, go back in and modify the SinglePet.js file to hide/show based on that value
+// .filter(pet => {
+//   if (selection === 'all') {
+//     return pet
+//   } else {
+//     let singular = selection.slice(0,-1);
+//     return pet.species === singular
+//   }
+// })
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PetList);
@@ -136,7 +141,8 @@ function SinglePet(props) {
       setStatus = _React$useState2[1];
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: status ? 'single-pet adopted' : 'single-pet'
+    className: status ? 'single-pet adopted' : 'single-pet',
+    hidden: props.visible
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Pet Name: ", props.pet.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", props.pet.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Species: ", props.pet.species), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: function onClick() {
       return setStatus(!status);
