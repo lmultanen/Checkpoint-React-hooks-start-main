@@ -7,17 +7,6 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 const Root = () => {
-  // async function getPets() {
-  //   try { 
-  //     const {data} = await axios.get('/api/pets')
-  //     return data;
-  //   } catch(err) {
-  //     console.err("Something went wrong",err);
-  //   }
-  // }
-  // const pets = getPets();
-  // console.log(pets)
-  // let pets = [];
   const [petList, setPetList] = useState([]);
 
   useEffect(() => {
