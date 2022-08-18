@@ -4,7 +4,7 @@ function SinglePet(props) {
   const [status, setStatus] = React.useState(false);
 
   return (
-    <div className={`single-pet`}>
+    <div className={status ? 'single-pet adopted': 'single-pet'}>
       <p>Pet Name: {props.pet.name}</p>
       <p>Description: {props.pet.description}</p>
       <p>Species: {props.pet.species}</p>
