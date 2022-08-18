@@ -17,7 +17,6 @@ function PetList(props) {
   return (
     <>
       <select onChange={event => {
-        console.log(event.target.value)
         setSelection(event.target.value)}}>
         <option>all</option>
         <option>cats</option>
