@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 const Root = () => {
   const [petList, setPetList] = useState([]);
 
+  // const {id} = React.useParams();
+
   useEffect(() => {
     async function getPets() {
       try {
@@ -19,7 +21,11 @@ const Root = () => {
       }
     }
     getPets();
-  },[])
+  },[petList])
+
+  if (petList.length === 0) {
+    return <>Loading...</>
+  }
 
   return (
     <>

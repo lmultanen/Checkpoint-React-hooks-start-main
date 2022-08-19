@@ -14,6 +14,11 @@ const cody = {
 function PetList(props) {
   const [selection, setSelection] = useState('all');
 
+  // instead of filtering the list, maybe pass in the value to SinglePet
+
+  // maybe try writing a function here that takes in a parameter (would be species)
+  // and then passing that to each SinglePet component
+
   return (
     <>
       <select onChange={event => {
@@ -23,15 +28,11 @@ function PetList(props) {
         <option>dogs</option>
       </select>
       <div className="pet-list">
-            {props.pets.filter(pet => {
-              if (selection === 'all') {
-                return pet
-              } else {
-                let singular = selection.slice(0,-1);
-                return pet.species === singular
-              }
-            }).map((pet,idx) => 
-              <SinglePet pet={pet} key={idx}/>
+        {props.pets.map((pet,idx) => 
+              <SinglePet pet={pet} key={idx} 
+              visible={
+                selection === 'all' ? true : (selection.slice(0,-1) === pet.species)
+              }/>
             )}
       </div>
     </>
@@ -46,3 +47,30 @@ function PetList(props) {
 
 export default PetList;
 
+// .filter(pet => {
+//   if (selection === 'all') {
+//     return pet
+//   } else {
+//     let singular = selection.slice(0,-1);
+//     return pet.species === singular
+//   }
+// })
+
+// div className="pet-list">
+//             {props.pets.filter(pet => {
+//               if (selection === 'all') {
+//                 return pet
+//               } else {
+//                 let singular = selection.slice(0,-1);
+//                 return pet.species === singular
+//               }
+//             }).map((pet,idx) => 
+//               <SinglePet pet={pet} key={idx}/>
+//             )}
+//       </div>
+
+      // <div className="pet-list">
+      //       {props.pets.map((pet,idx) => 
+      //         <SinglePet pet={pet} key={idx} selected={selection}/>
+      //       )}
+      // </div>
