@@ -2490,26 +2490,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-var cody = {
-  id: 2,
-  name: 'Cody',
-  description: 'Adorable pug who loves to hug',
-  species: 'dog'
-}; // PetList only renders one SinglePet. We'd like it to render a list of pets,
+ // PetList only renders one SinglePet. We'd like it to render a list of pets,
 // passed in as props.pets. Don't forget to add a unique key to each one!
 
 function PetList(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState2 = _slicedToArray(_useState, 2),
       selection = _useState2[0],
-      setSelection = _useState2[1]; // instead of filtering the list, maybe pass in the value to SinglePet
-  // maybe try writing a function here that takes in a parameter (would be species)
-  // and then passing that to each SinglePet component
+      setSelection = _useState2[1];
 
-
-  console.log('logging selection state', selection);
-  console.log('logging if state = all', selection === 'all');
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     onChange: function onChange(event) {
       setSelection(event.target.value);
@@ -2524,37 +2513,9 @@ function PetList(props) {
       visible: selection === 'all' ? true : selection.slice(0, -1) === pet.species
     });
   })));
-} //selection filter working, adoption status not persisting...
-//might want to initialize a hidden={something} when making each SinglePet
-//instead of filtering.
-//then, go back in and modify the SinglePet.js file to hide/show based on that value
+}
 
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PetList); // .filter(pet => {
-//   if (selection === 'all') {
-//     return pet
-//   } else {
-//     let singular = selection.slice(0,-1);
-//     return pet.species === singular
-//   }
-// })
-// div className="pet-list">
-//             {props.pets.filter(pet => {
-//               if (selection === 'all') {
-//                 return pet
-//               } else {
-//                 let singular = selection.slice(0,-1);
-//                 return pet.species === singular
-//               }
-//             }).map((pet,idx) => 
-//               <SinglePet pet={pet} key={idx}/>
-//             )}
-//       </div>
-// <div className="pet-list">
-//       {props.pets.map((pet,idx) => 
-//         <SinglePet pet={pet} key={idx} selected={selection}/>
-//       )}
-// </div>
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PetList);
 
 /***/ }),
 
@@ -2691,24 +2652,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SinglePet(props) {
-  // basically checking to see if property doesn't exist or already false
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       status = _React$useState2[0],
-      setStatus = _React$useState2[1]; // !props.pet.status ? false : props.pet.status)
-  // props.pet.status = status;
-  // let visible = true;
-  // const [visible, setVisible] = React.useState(true);
-  // making sure not props not null; need to add the loading screen when fetch in progress
-  // if (!(props.pet.selected === 'all') && !props) {
-  //   setVisible(props.pet.species === props.pet.selected.slice(0,-1))
-  //   console.log(props.pet.species, visible)
-  // }
-  // hidden={!props.pet.visible}
-  // style={props.pet.visible? '' : 'visibility:hidden'}
-  // + (props.pet.visible ? '':' hidden')}
-  // console.log('logging visible prop for', props.pet.name, props.visible)
-
+      setStatus = _React$useState2[1];
 
   return props.visible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: status ? 'single-pet adopted' : 'single-pet'

@@ -27,3 +27,5 @@ function PetList(props) {
     </>
   )
 }
+
+export default PetList;
