@@ -9,9 +9,7 @@ function PetList(props) {
 
   return (
     <>
-      <select onChange={event => {
-        setSelection(event.target.value)
-        console.log('logging state after change', selection)}}>
+      <select onChange={event => {setSelection(event.target.value)}}>
         <option>all</option>
         <option>cats</option>
         <option>dogs</option>
