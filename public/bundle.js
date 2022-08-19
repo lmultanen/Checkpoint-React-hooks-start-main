@@ -2508,9 +2508,12 @@ function PetList(props) {
   // and then passing that to each SinglePet component
 
 
+  console.log('logging selection state', selection);
+  console.log('logging if state = all', selection === 'all');
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     onChange: function onChange(event) {
       setSelection(event.target.value);
+      console.log('logging state after change', selection);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "all"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "cats"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", null, "dogs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pet-list"
@@ -2645,7 +2648,7 @@ var Root = function Root() {
     }
 
     getPets();
-  }, [petList]);
+  }, []);
 
   if (petList.length === 0) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, "Loading...");
@@ -2703,15 +2706,17 @@ function SinglePet(props) {
   // }
   // hidden={!props.pet.visible}
   // style={props.pet.visible? '' : 'visibility:hidden'}
+  // + (props.pet.visible ? '':' hidden')}
+  // console.log('logging visible prop for', props.pet.name, props.visible)
 
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: (status ? 'single-pet adopted' : 'single-pet') + (props.pet.visible ? '' : ' hidden')
+  return props.visible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: status ? 'single-pet adopted' : 'single-pet'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Pet Name: ", props.pet.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", props.pet.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Species: ", props.pet.species), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: function onClick() {
       return setStatus(!status);
     }
-  }, "Toggle Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status ? "Adopted" : "Available"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Visible: ", props.pet.visible));
+  }, "Toggle Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status ? "Adopted" : "Available"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Visible: ", props.pet.visible)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null);
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SinglePet);

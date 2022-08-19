@@ -21,7 +21,7 @@ const Root = () => {
       }
     }
     getPets();
-  },[petList])
+  },[])
 
   if (petList.length === 0) {
     return <>Loading...</>
